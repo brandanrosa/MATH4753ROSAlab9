@@ -11,7 +11,9 @@
 #' @examples \dontrun{mytrain(a = -2, b = 3)}
 mytrain <- function(a, b){
 
-  curve(dtrain(x),
+  x <- NULL
+
+  graphics::curve(dtrain(x),
         xlim = c(-10,10),
         col = "black",
         lwd = 3,
@@ -22,11 +24,11 @@ mytrain <- function(a, b){
   xcurve <- seq(a, b, length = 500)
   ycurve <- dtrain(xcurve)
 
-  polygon(x = c(a, xcurve, b), y = c(0, ycurve, 0), col = "darkgreen")
-  axis(side = 1, at = c(a, b))
+  graphics::polygon(x = c(a, xcurve, b), y = c(0, ycurve, 0), col = "darkgreen")
+  graphics::axis(side = 1, at = c(a, b))
 
   prob <- ptrain(b) - ptrain(a)
   dec <- round(prob, 4)
 
-  text(5, 0.1, paste0("Area ="," ", dec))
+  graphics::text(5, 0.1, paste0("Area ="," ", dec))
 }

@@ -12,44 +12,45 @@
 #' @examples \dontrun{rtrain(n = 10000, w = 0.3)}
 rtrain <- function(n, w = 0.3){
 
+  x <- NULL
   obj <- function(n){
 
-    w <- runif(1)
+    w <- stats::runif(1)
     f <- function(x) {
       ptrain(x)-w
     }
 
-    uniroot(f, interval = c(-5,5))$root
+    stats::uniroot(f, interval = c(-5,5))$root
   }
   v <- replicate(n, obj())
 
-  curve(ptrain(x)-w, c(-5,5),
+  graphics::curve(ptrain(x)-w, c(-5,5),
         xlab = "Y",
         ylab = "Objective function f",
         col = "hotpink",
         xlim = c(-5,5),
         lwd = 2
   )
-  abline(h = 0,
+  graphics::abline(h = 0,
          lwd = 2,
          col = "blue")
 
-  h <- hist(v, plot = FALSE)
+  h <- graphics::hist(v, plot = FALSE)
   ratio <- h$density/max(h$density)
-  coll <- rgb(0,0,ratio)
-  hist(v,
+  coll <- grDevices::rgb(0,0,ratio)
+  graphics::hist(v,
        freq = FALSE,
        xlab = "Y",
        ylab = "Density",
        col = coll,
        main = "Simulation of Time a Train is Late"
   )
-  curve(dtrain(x),
+  graphics::curve(dtrain(x),
         add = TRUE,
         lwd = 3,
         col = "hotpink"
   )
 
-  head_v <- as.character(head(v, 10))
+  head_v <- as.character(utils::head(v, 10))
   list(head_v = head_v)
 }

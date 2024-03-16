@@ -6,9 +6,11 @@
 #' @return a plot of the density with shaded area and displayed probability result
 #' @export
 #'
+#' @importFrom shiny runApp
+#'
 #' @examples \dontrun{shinytrains()}
 shinytrains <- function() {
-  shiny::runApp(system.file("shinytrains",
+  runApp(system.file("shinytrains",
                             package = "MATH4753ROSAlab9"),
                 launch.browser = TRUE)
 }
