@@ -1,0 +1,75 @@
+---
+title: "Waiting for a Train"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Waiting for a Train}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753ROSAlab9)
+```
+
+# Introduction
+
+This package creates `dpqr` functions for the Train problem (MS 5.5 pg. 191). The "dtrain" and "ptrain" functions are the density and cumulative probability functions, respectively, for the aforementioned problem. The function "rtrain" (like other `r-stem` functions) produces a random sample from the distribution. It further displays the curve of the objective function from `w-F` theory, and creates a histogram from the generated values. Lastly, the package contains a shiny app, "shinytrains". This interactive app allows the user to manipulate values to find the probability between them. The user can interact with these values via a slider or "brushing" across the graph with a mouse.
+
+# Examples
+
+We will now investigate the package with a few examples. I will forgo an example of `dtrain` as it is mildly uninspiring.
+
+## Example 1 - `ptrain`
+
+```{r}
+ptrain(3)
+```
+
+Recall, a `p-stem` function calculates the lower-tail probability. So the $P(Y \le 3)=0.896$.
+
+## Example 2 - `mytrain`
+
+This function is the very beginnings of the shiny app which we will look at in a bit.
+
+```{r}
+mytrain(a = -2, b = 3)
+
+mytrain(-10, 3)
+```
+
+So the $P(-2 \le Y \le 3) = 0.68$ and using the same problem from above, essentially $P(Y\le3) = 0.896$.
+
+# `shinytrains`
+
+To view this app, run the following code in `R`
+
+`shiny::runGitHub(repo = "MATH4753ROSAlab9", username = "brandanrosa", subdir = "inst/shinytrains")`
+
+A screen shot of the app:
+
+```{r, echo=FALSE, out.width="400px", fig.align="center"}
+knitr::include_graphics("C:/R_Packages/MATH4753ROSAlab9/vignettes/a.JPG")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
