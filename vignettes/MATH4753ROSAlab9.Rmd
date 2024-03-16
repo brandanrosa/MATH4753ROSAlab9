@@ -38,7 +38,7 @@ Recall, a `p-stem` function calculates the lower-tail probability. So the $P(Y \
 
 This function is the very beginnings of the shiny app which we will look at in a bit.
 
-```{r}
+```{r, fig.align = "center", fig.width=7, fig.height=5}
 mytrain(a = -2, b = 3)
 
 mytrain(-10, 3)
@@ -51,25 +51,3 @@ So the $P(-2 \le Y \le 3) = 0.68$ and using the same problem from above, essenti
 To view this app, run the following code in `R`
 
 `shiny::runGitHub(repo = "MATH4753ROSAlab9", username = "brandanrosa", subdir = "inst/shinytrains")`
-
-A screen shot of the app:
-
-```{r, echo=FALSE, out.width="400px", fig.align="center"}
-knitr::include_graphics("C:/R_Packages/MATH4753ROSAlab9/vignettes/a.JPG")
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
